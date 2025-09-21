@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -68,3 +69,16 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+=======
+# JusticeAssist
+
+JusticeAssist is a guided cybercrime reporting and evidence-building platform designed to make the reporting process simple, accessible, and legally valid. The platform provides:
+
+- A step-by-step guided complaint form
+- AI-powered evidence analysis
+- Report (PDF) generation
+- Awareness tools (blogs, videos, quizzes)
+- Guidance for victims of cybercrime
+
+JusticeAssist bridges the gap between technology and law to empower users in taking action against cybercrime.
+>>>>>>> 1c49c99aefa4f7f5795e1f2187f42e6431c36732
