@@ -1,0 +1,150 @@
+/* src/components/UserNavbar.css */
+
+.navbar {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  background-color: #112d4e;
+  color: #f9f7f7;
+  padding: 0.8rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  font-family: 'Poppins', sans-serif;
+}
+
+.navbar-left { justify-self: start; }
+.navbar-center { justify-self: center; }
+.navbar-right {
+  justify-self: end;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.navbar-logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #f9f7f7;
+  text-decoration: none;
+}
+
+.navbar-logo span {
+  color: #3f72af;
+}
+
+.navbar-links {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.nav-link {
+  color: #fff;
+  text-decoration: none;
+  position: relative;
+  padding: 6px 10px;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #112d4e; /* Dark blue text */
+  background-color: #ffffff; /* White background */
+}
+
+.nav-link.active {
+  font-weight: 600;
+}
+
+.magic-line {
+  position: absolute;
+  bottom: 0;
+  height: 3px;
+  background: #ffffff;
+  border-radius: 2px;
+  transition: left 0.3s ease, width 0.3s ease;
+}
+
+/* Dropdown */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-toggle {
+  display: flex;
+  align-items: center;
+  font-weight: 700; /* Ensure "Services" text is bold */
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  background-color: #1a3c6e;
+  min-width: 200px;
+  padding: 0.5rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+}
+
+.dropdown.open .dropdown-content {
+  display: block;
+}
+
+.dropdown-content a {
+  color: #f9f7f7;
+  padding: 0.8rem 1.2rem;
+  text-decoration: none;
+  display: block;
+  border-radius: 8px;
+  transition: background-color 0.3s;
+}
+
+.dropdown-content a:hover {
+  background-color: #edeef0;
+}
+
+/* Logout Button */
+.logout-button {
+  background-color: transparent;
+  border: 2px solid #3f72af;
+  color: #3f72af;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.logout-button:hover {
+  background-color: #3f72af;
+  color: #ffffff;
+}
+
+/* Hamburger and mobile styles */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 6px;
+}
+
+.bar {
+  width: 25px;
+  height: 3px;
+  background-color: #F9F7F7;
+  transition: all 0.3s ease;
+}
+
+.rotate1 { transform: rotate(45deg) translate(5px, 5px); }
+.fade { opacity: 0; }
+.rotate2 { transform: rotate(-45deg) translate(5px, -5px); }
+
+@media screen and (max-width: 768px) {
+  .navbar-center { display: none; } /* Hide center content on mobile */
+  .hamburger { display: flex; }
+  /* Add other mobile styles as needed */
+}

@@ -1,0 +1,111 @@
+/* Container */
+.cyberblogs-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    font-family: "Inter", "Roboto", sans-serif;
+    color: #1f2937; /* dark gray */
+    line-height: 1.7;
+    background-color: #f9fafb;
+  }
+  
+  /* Main Title */
+  .cyberblogs-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 0.5rem;
+    color: #111827;
+  }
+  
+  /* Intro Paragraph */
+  .cyberblogs-intro {
+    font-size: 1.1rem;
+    text-align: left    ;
+    color: #4b5563; /* gray-600 */
+    margin-bottom: 2rem;
+  }
+  
+  /* Each Blog Article */
+  .cyberblog-article {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #e5e7eb; /* divider */
+  }
+  
+  /* Blog Title */
+  .cyberblog-heading {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #111827;
+  }
+  
+  /* Blog Image */
+  .cyberblog-image {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Blog Section */
+  .cyberblog-section {
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    text-align: justify;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  /* Section Image if exists */
+  .cyberblog-section-image {
+    width: 40%;
+    max-width: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    float: left;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  /* Section Subheading */
+  .cyberblog-subheading {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #111827;
+    flex-basis: 100%;
+  }
+  
+  /* Section Content */
+  .cyberblog-content {
+    font-size: 1rem;
+    color: #374151; /* gray-700 */
+    margin-bottom: 0.8rem;
+    flex: 1 1 55%;
+  }
+  
+  /* Lists inside sections */
+  .cyberblog-list {
+    list-style: disc inside;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    padding-left: 1rem;
+    color: #374151;
+  }
+  
+  .cyberblog-list li {
+    margin-bottom: 0.4rem;
+  }
+  
+  /* Divider */
+  .cyberblog-divider {
+    border: none;
+    height: 1px;
+    background-color: #e5e7eb;
+    margin-top: 2rem;
+  }
+  

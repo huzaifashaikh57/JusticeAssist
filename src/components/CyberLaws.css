@@ -1,0 +1,178 @@
+/* Page container */
+.cyber-laws-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 1rem;
+    font-family: 'Poppins', sans-serif;
+    color: #111;
+    background: #ffffff; /* white page background */
+    min-height: 100vh;
+  }
+  
+  /* Page title */
+  .page-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    color: #0f172a; /* deep navy */
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Intro paragraph */
+  .intro {
+    text-align: center;
+    color: #475569; /* gray-blue */
+    margin-bottom: 3rem;
+    font-size: 1.1rem;
+  }
+  
+  /* Category titles */
+  .category-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 3px solid transparent;
+    padding-bottom: 0.25rem;
+    transition: border-color 0.3s ease;
+  }
+  
+  .category-title.blue { 
+    color: #0284c7; /* JusticeAssist blue */
+    border-color: #0284c7;
+  }
+  
+  .category-title.purple { 
+    color: #7c3aed; /* JusticeAssist purple */
+    border-color: #7c3aed;
+  }
+  
+  /* Grid layout */
+  .cyber-laws-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+  
+  /* Card base */
+  .law-card.cool-card {
+    background: #1e293b; /* dark card */
+    border-radius: 1rem;
+    padding: 1.75rem;
+    color: #e2e8f0;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    transition: transform 0.4s ease, box-shadow 0.4s ease, border-top 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    border-top: 3px solid transparent;
+  }
+  
+  /* Hover effect */
+  .law-card.cool-card:hover {
+    transform: translateY(-10px) rotateX(2deg) rotateY(2deg);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.35);
+    border-top: 3px solid #0284c7; /* glowing accent */
+  }
+  
+  /* Law header */
+  .law-header {
+    display: flex;
+    flex-direction: column; 
+    justify-content: space-between;
+    align-items: left;
+    margin-bottom: 1rem;
+  }
+  
+  .law-header h4 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #facc15; /* yellow accent */
+  }
+  
+  .law-header span {
+    font-size: 0.875rem;
+    color: #94a3b8; /* light gray */
+    font-weight: 500;
+  }
+  
+  /* Description */
+  .description {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    text-align: justify;
+    margin-bottom: 0.75rem;
+    color: #e2e8f0;
+  }
+  
+  /* Preventive measures */
+  .preventive {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0.75rem;
+  }
+  
+  .preventive li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.3rem;
+    font-size: 0.9rem;
+    color: #cbd5e1;
+  }
+  
+  .preventive li::before {
+    content: "⚡";
+    position: absolute;
+    left: 0;
+    color: #facc15; /* yellow flash */
+  }
+  
+  /* Example */
+  .example {
+    font-style: italic;
+    color: #38bdf8; /* JusticeAssist blue */
+    margin-top: 0.5rem;
+  }
+  
+  /* Responsive tweaks */
+  @media (max-width: 768px) {
+    .cyber-laws-container {
+      padding: 2rem 1rem;
+    }
+    .law-card.cool-card {
+      padding: 1.25rem;
+    }
+    .category-title {
+      font-size: 1.5rem;
+    }
+  }
+  
+  .lang-switcher {
+    display: flex;
+    justify-content: flex-end; /* right-aligned */
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .lang-switcher button {
+    background: #1b64d2; /* light gray */
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+  
+  .lang-switcher button:hover {
+    background: #081b34; /* slightly darker on hover */
+  }
+  
+  .lang-switcher button.active {
+    background: #0a1e3d; /* blue for active */
+    color: white;
+    font-weight: 600;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  }
+  

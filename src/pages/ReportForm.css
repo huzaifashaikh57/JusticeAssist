@@ -1,0 +1,171 @@
+/* ========================== */
+/* Report Form Container */
+.report-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 30px 25px;
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Form Title */
+.form-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 25px;
+  color: #0d3b66; /* JusticeAssist primary blue */
+}
+
+/* ========================== */
+/* Form Styles */
+.styled-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-row label {
+  font-weight: 500;
+  color: #333;
+}
+
+/* Split Inputs (First/Last Name & Phone) */
+.form-split {
+  display: flex;
+  gap: 10px;
+}
+
+.form-split input.short-input {
+  width: 80px;
+}
+
+/* Inputs & Textareas */
+input[type="text"],
+input[type="email"],
+input[type="datetime-local"],
+select,
+textarea {
+  padding: 10px 12px;
+  border: 1.5px solid #ccc;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: #0d3b66;
+  box-shadow: 0 0 0 2px rgba(13, 59, 102, 0.2);
+}
+
+/* Floating select wrapper for city */
+.floating-input select {
+  width: 100%;
+}
+
+/* Radio Group */
+/* Toggle Switch */
+.toggle-container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.toggle-input {
+  display: none; /* Hide the default checkbox */
+}
+
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 28px;
+  background-color: #ccc;
+  border-radius: 34px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.toggle-switch::before {
+  content: '';
+  position: absolute;
+  left: 4px;
+  bottom: 4px;
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.3s;
+}
+
+.toggle-input:checked + .toggle-switch {
+  background-color: #0d3b66; /* JusticeAssist primary blue */
+}
+
+.toggle-input:checked + .toggle-switch::before {
+  transform: translateX(22px);
+}
+
+.toggle-status {
+  font-weight: 500;
+  color: #333;
+}
+
+/* Submit Button */
+/* Form Actions & Buttons */
+.form-actions {
+  display: flex;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.submit-btn,
+.download-btn {
+  flex: 1; /* Make buttons take equal width */
+  padding: 12px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.submit-btn {
+  background: #0d3b66; /* Primary blue */
+}
+
+.download-btn {
+  background: #28a745; /* Green for download */
+}
+
+.submit-btn:hover {
+  background: #0a2e4f;
+  transform: translateY(-2px);
+}
+
+.download-btn:hover {
+  background: #218838;
+  transform: translateY(-2px);
+}
+
+/* ========================== */
+/* Responsive */
+@media screen and (max-width: 600px) {
+  .form-split {
+    flex-direction: column;
+  }
+}

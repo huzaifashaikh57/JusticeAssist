@@ -1,0 +1,28 @@
+/* Tab button base */
+.tab-btn {
+  padding: 0.75rem 1.5rem;
+  font-size: 1.125rem;
+  font-weight: 500;
+  text-transform: capitalize;
+  color: #4b5563; /* Default text color (gray-600) */
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Hover effect */
+.tab-btn:hover {
+  background-color: #f0f4f8; /* A very light blue, derived from the theme */
+  color: #112d4e; /* Dark blue text on hover */
+  transform: translateY(-2px); /* Add slight lift effect */
+}
+
+/* Active tab */
+.tab-btn.active {
+  font-weight: 600;
+  background-color: #dbe2ef; /* Light blue background from the theme */
+  color: #112d4e; /* Dark blue text for active tab */
+  box-shadow: none; /* Remove inner shadow for a flatter look */
+}

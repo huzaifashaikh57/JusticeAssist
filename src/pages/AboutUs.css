@@ -1,0 +1,186 @@
+/* src/pages/AboutUs.css */
+
+.about-us-page {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f7f8f9;
+  color: #112d4e;
+}
+
+/* Hero Section */
+.about-hero {
+  background: linear-gradient(135deg, #112d4e, #3f72af);
+  color: #f0f4f8; /* Softer text color */
+  padding: 5rem 2rem; /* Adjusted padding for height */
+  text-align: center;
+  border-bottom-left-radius: 80px; /* Adding a curve */
+  border-bottom-right-radius: 80px; /* Adding a curve */
+}
+
+.about-hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.about-hero-text h1 {
+  font-size: 4rem; /* Larger font size for impact */
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #ffffff; /* Keep main heading white for contrast */
+}
+
+.about-hero-text p {
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin: 0 auto;
+  opacity: 0.9;
+  color: #ffffff; /* White text as requested */
+}
+
+.about-hero-animation {
+  width: 100%;
+  max-width: 400px;
+}
+
+@media (min-width: 768px) {
+  .about-hero-content {
+    flex-direction: row;
+    text-align: left;
+  }
+}
+
+/* Common Section Styling */
+.about-us-page section {
+  padding: 4rem 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.about-us-page h2 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #112d4e;
+  margin-bottom: 1.5rem;
+}
+
+.about-us-page p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #fffcfc;
+}
+
+/* Our Mission Section */
+.about-mission p {
+  max-width: 800px;
+  margin: 0 auto;
+  color: #112d4e;
+  font-style: italic;
+  font-size: 1.2rem;
+}
+
+/* Our Story Section */
+.our-story {
+  background-color: #ffffff;
+  border-radius: 15px;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.story-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  text-align: left;
+}
+
+.story-point {
+  padding: 1.5rem;
+  border-left: 4px solid #3f72af;
+  background-color: #f9f7f7;
+  border-radius: 0 8px 8px 0;
+}
+
+.story-point h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #112d4e;
+  margin-bottom: 0.5rem;
+  
+}
+
+.story-point p {
+  color: #112d4e;
+}
+
+
+
+/* Our Commitment Section */
+.commitment-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+@media (min-width: 768px) {
+  .commitment-cards {
+    flex-direction: row;
+  }
+}
+
+.commitment-card {
+  flex: 1;
+  background-color: #f1f3f7;
+  padding: 2rem;
+  border-radius: 15px;
+  text-align: center;
+}
+
+.commitment-card h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #112d4e;
+}
+
+.commitment-card p {
+  color: #112d4e;
+}
+
+/* CTA Section */
+.about-cta {
+  background-color: #112d4e;
+  color: #ffffff;
+  border-radius: 15px;
+  margin-top: 2rem;
+}
+
+.about-cta h2 {
+  color: #ffffff;
+}
+
+.about-cta p {
+  color: #dbe2ef;
+  max-width: 600px;
+  margin: 0 auto 1.5rem;
+}
+
+.cta-button {
+  background-color: #ffffff;
+  color: #112d4e;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.3s, color 0.3s;
+  border: none;
+  cursor: pointer;
+}
+
+.cta-button:hover {
+  background-color: #dbe2ef;
+}
