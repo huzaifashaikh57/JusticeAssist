@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import jsPDF from 'jspdf';
 import './ReportForm.css';
 
@@ -104,6 +105,14 @@ const ReportForm = () => {
   });
 
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [searchParams] = useSearchParams();
+
+  useEffect(() => {
+    const category = searchParams.get('category');
+    if (category) {
+      setFormData(prev => ({ ...prev, category }));
+    }
+  }, [searchParams]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -206,7 +215,7 @@ const ReportForm = () => {
 
   return (
     <div className="report-container">
-      <h2 className="form-title">REPORT A CYBERCRIME</h2>
+      <h2 className="form-title">Cybercrime Guidance Form</h2>
 
       <form className="styled-form" onSubmit={handleSubmit}>
       

@@ -22,6 +22,7 @@ const UserNavbar = () => {
   const servicePaths = [
     '/get-guidance',
     '/report',
+    '/chatbot',
     '/awareness',
     '/suspect-guess',
   ];
@@ -113,6 +114,7 @@ const UserNavbar = () => {
             <div className="dropdown-content">
               <Link to="/get-guidance">Get Guidance</Link>
               <Link to="/report">PDF Generator</Link>
+              <Link to="/chatbot">AI Assistant</Link>
               <Link to="/awareness">Cyber Awareness</Link>
               <Link to="/suspect-guess">Suspect Guess</Link>
             </div>
