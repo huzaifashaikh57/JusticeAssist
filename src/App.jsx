@@ -25,6 +25,7 @@ import ContactUs from './pages/ContactUs';
 import Signup from './pages/Signup';
 import ForgotPassword from './pages/ForgotPassword';
 import Quiz from './pages/Quiz';
+import AIAssistant from './pages/AIAssistant';
 
 {/*import EmergencyHelp from './pages/EmergencyHelp';*/}
 
@@ -142,6 +143,15 @@ const App = () => {
         />
 
         <Route
+          path="/chatbot"
+          element={
+            <ProtectedRoute>
+              <AIAssistant />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
           path="/admin/dashboard"
           element={
             <ProtectedRoute>
@@ -163,8 +173,8 @@ const App = () => {
       {/* Footer condition */}
       {!isAuthPage && <Footer />}
 
-      {/* ✅ Chatbot Popup (visible on all pages except login) */}
-      {!isAuthPage && <ChatbotPopup />}
+      {/* ✅ Chatbot Popup (visible on all pages except login and chatbot) */}
+      {!isAuthPage && location.pathname !== '/chatbot' && <ChatbotPopup />}
       
     </>
   );

@@ -13,6 +13,7 @@ const guidanceData = [
     image: "/images/hacker03.jpg",
     video: "/videos/video01.mp4",
     link: "/report",
+    category: "Online Financial Fraud",
   },
   {
     title: "Overpayment & Refund Scams",
@@ -22,6 +23,7 @@ const guidanceData = [
     image: "/images/hacker01.jpg",
     video: "/videos/video02.mp4",  
     link: "/report",
+    category: "Online Financial Fraud",
   },
   {
     title: "Job Scams",
@@ -31,6 +33,7 @@ const guidanceData = [
     image: "/images/job.jpg",     
     video: "/videos/video03.mp4",       
     link: "/report",
+    category: "Online Financial Fraud",
   },
   {
     title: "Loan Scams",
@@ -40,6 +43,7 @@ const guidanceData = [
     image: "/images/loan.jpg",     
     video: "/videos/loan.mp4",       
     link: "/report",
+    category: "Online Financial Fraud",
   },    
   {
     title: "Social Media Hacking",
@@ -49,6 +53,7 @@ const guidanceData = [
     image: "/images/socialmedia.jpg",
     video: "/videos/video05.mp4",
     link: "/report",
+    category: "Hacking/Unauthorized Access",
   },
   {
     title: "Online Blackmail",
@@ -58,6 +63,7 @@ const guidanceData = [
     image: "/images/security.jpg",
     video: "/videos/video06.mp4",
     link: "/report",
+    category: "Cyber Harassment",
   },
   {
     title: "Sextortion & Intimate Image Abuse",
@@ -67,6 +73,7 @@ const guidanceData = [
     image: "/images/abuse.jpg",
     video: "/videos/video07.mp4",
     link: "/report",
+    category: "Cyber Crime Against Women",
   },
   {
     title: "Online Harassment & Cyberbullying",
@@ -76,6 +83,7 @@ const guidanceData = [
     image: "/images/harassment.jpg",
     video: "/videos/video08.mp4",
     link: "/report",
+    category: "Cyber Harassment",
   },
   {
     title: "Stock Market Scams",
@@ -85,6 +93,7 @@ const guidanceData = [
     image: "/images/crypto.jpg",
     video: "/videos/video09.mp4",
     link: "/report",
+    category: "Online Financial Fraud",
   },
   {
     title: "OTP & SIM Swap Fraud",
@@ -94,6 +103,7 @@ const guidanceData = [
     image: "/images/sim.jpg",
     video: "/videos/video12.mp4",
     link: "/report",
+    category: "Online Financial Fraud",
   },
   {
     title: "Deepfake & AI-Based Misuse",
@@ -103,6 +113,7 @@ const guidanceData = [
     image: "/images/deepfake.jpg",
     video: "/videos/video13.mp4",
     link: "/report",
+    category: "Cyber Harassment",
   },
   {
     title: "In-App Purchase Scams",
@@ -112,6 +123,7 @@ const guidanceData = [
     image: "/images/scam.jpg",
     video: "/videos/video14.mp4",
     link: "/report",
+    category: "Online Financial Fraud",
   },
   {
     title: "QR Code & Fake Payment Apps",
@@ -121,6 +133,7 @@ const guidanceData = [
     image: "/images/qrcode.jpg",
     video: "/videos/video15.mp4",
     link: "/report",
+    category: "Online Financial Fraud",
   },
   {
     title: "Romance Scams & Online Dating Fraud",
@@ -130,6 +143,7 @@ const guidanceData = [
     image: "/images/romancefraud.jpg",
     video: "/videos/video16.mp4",
     link: "/report",
+    category: "Cyber Harassment",
   }, 
 ];
 
@@ -144,36 +158,39 @@ export default function GetGuidance() {
 
   const handleFlip = (index) => setFlippedIndex(index);
   const handleBack = () => setFlippedIndex(null);
-  const handleReportClick = () => {
+  const handleReportClick = (category) => {
     setFlippedIndex(null); // close modal first
-    setTimeout(() => navigate("/report"), 300); // wait for flip animation
+    setTimeout(() => navigate(`/report?category=${encodeURIComponent(category)}`), 300); // wait for flip animation
   };
 
   return (
     <div className="guidance-container">
-      {guidanceData.map((item, index) => (
-        <motion.div
-          key={index}
-          className="guidance-card"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4 }}
-          viewport={{ once: true }}
-        >
-          <img src={item.image} alt={item.title} className="guidance-img" />
-          <h3>{item.title}</h3>
-          <p>{item.description}</p>
-          <div className="card-buttons">
-          <button onClick={handleReportClick} className="report-btn">
-            Report Now
-          </button>
 
-            <button onClick={() => handleFlip(index)} className="know-btn">
-              Know More
+      <div className="cards-container">
+        {guidanceData.map((item, index) => (
+          <motion.div
+            key={index}
+            className="guidance-card"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+            viewport={{ once: true }}
+          >
+            <img src={item.image} alt={item.title} className="guidance-img" />
+            <h3>{item.title}</h3>
+            <p>{item.description}</p>
+            <div className="card-buttons">
+            <button onClick={() => handleReportClick(item.category)} className="report-btn">
+              Guidance Form
             </button>
-          </div>
-        </motion.div>
-      ))}
+
+              <button onClick={() => handleFlip(index)} className="know-btn">
+                Know More
+              </button>
+            </div>
+          </motion.div>
+        ))}
+      </div>
 
 {/* Flip Modal */}
 <AnimatePresence>

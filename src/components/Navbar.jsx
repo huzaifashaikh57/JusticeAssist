@@ -42,8 +42,8 @@ const UserNavbar = () => {
           </span>
           <div className="dropdown-content">
           <Link to="/get-guidance">Get Guidance</Link>
-          <Link to="/report">PDF Generator</Link> {/* or 'Report Cybercrime' */}
-            <Link to="/legal-help" onClick={closeMenu}>PDF Generator</Link>
+          
+            
             <Link to="/chatbot" onClick={closeMenu}>AI Assistant</Link>
             <Link to="/awareness" onClick={closeMenu}>Cyber Awareness</Link>
             <Link to="/suspect-guess" onClick={closeMenu}>Suspect Guess</Link>
