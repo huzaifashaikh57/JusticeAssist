@@ -1,108 +1,66 @@
-// src/pages/Login.jsx
 import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
-import { FaUserShield, FaUser, FaEye, FaEyeSlash, FaGoogle } from 'react-icons/fa';
-import './Login.css';
+import { Link, useNavigate } from 'react-router-dom';
+import './Auth.css';
 
 const Login = () => {
-  const [role, setRole] = useState('user');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [showPass, setShowPass] = useState(false);
-  const [error, setError] = useState('');
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!email || !password) {
-      setError('Please enter both email and password.');
-      return;
-    }
+    try {
+      const response = await fetch('http://localhost:5000/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      });
 
-    localStorage.setItem('isLoggedIn', 'true');
-    localStorage.setItem('role', role);
-
-    if (role === 'admin') {
-      navigate('/admin/dashboard');
-    } else {
-      navigate('/home');
+      if (response.ok) {
+        const data = await response.json();
+        localStorage.setItem('token', data.access_token);
+        alert('Login successful!');
+        navigate('/');
+      } else {
+        const data = await response.json();
+        alert(data.error || 'Login failed.');
+      }
+    } catch (error) {
+      console.error('Error logging in:', error);
+      alert('An error occurred while logging in.');
     }
   };
 
   return (
-    <div className="login-page-wrapper">
-      <div className="login-form-container-single">
-        
-
-        <h2>Login to JusticeAssist</h2>
-
-        <div className="role-switcher">
-          <button
-            className={`role-btn ${role === 'user' ? 'active' : ''}`}
-            onClick={() => setRole('user')}
-          >
-            <FaUser /> User
-          </button>
-          <button
-            className={`role-btn ${role === 'admin' ? 'active' : ''}`}
-            onClick={() => setRole('admin')}
-          >
-            <FaUserShield /> Admin
-          </button>
+    <div className="auth-container">
+      <form className="auth-form" onSubmit={handleSubmit}>
+        <h2>Login</h2>
+        <div className="form-group">
+          <label>Email</label>
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
         </div>
-
-        <form onSubmit={handleLogin} className="login-form-element">
-          <div className="input-group">
-            <input
-              type="email"
-              required
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Email Address"
-            />
-          </div>
-
-          <div className="input-group">
-            <div className="password-input">
-              <input
-                type={showPass ? 'text' : 'password'}
-                required
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="Password"
-              />
-              <span onClick={() => setShowPass(!showPass)} className="password-toggle">
-                {showPass ? <FaEyeSlash /> : <FaEye />}
-              </span>
-            </div>
-          </div>
-
-          {error && <p className="error-message">{error}</p>}
-
-          <div className="form-options">
-            <div className="toggle-switch-container">
-              <input type="checkbox" id="remember-me" className="toggle-switch-checkbox" />
-              <label htmlFor="remember-me" className="toggle-switch-label"></label>
-              <span>Remember Me</span>
-            </div>
-            <Link to="/forgot-password">Forgot Password?</Link>
-          </div>
-
-          <button type="submit" className="login-btn">Login</button>
-        </form>
-
-        <div className="divider">OR</div>
-
-        <div className="social-login">
-          <button className="social-btn google-btn"><FaGoogle /> Sign in with Google</button>
-          
+        <div className="form-group">
+          <label>Password</label>
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
         </div>
-
-        <div className="signup-link">
-          <p>New here? <Link to="/signup">Create an Account</Link></p>
-        </div>
-      </div>
+        <button type="submit">Login</button>
+        <p>
+          Don't have an account? <Link to="/register">Register</Link>
+        </p>
+      </form>
     </div>
   );
 };

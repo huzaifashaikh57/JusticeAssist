@@ -1,247 +1,56 @@
-/* src/pages/SuspectGuess.css */
-
-.suspect-guess-page {
-  font-family: 'Poppins', sans-serif;
-  background-color: #f9f7f7;
-  color: #112d4e;
-  padding-bottom: 4rem;
-}
-
-/* Hero Section */
-.suspect-hero {
-  background: linear-gradient(135deg, #112d4e, #3f72af);
-  color: #ffffff;
-  padding: 4rem 2rem;
-  text-align: center;
-  margin-bottom: 3rem;
-}
-
-.suspect-hero h1 {
-  font-size: 2.8rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-}
-
-.suspect-hero p {
-  font-size: 1.2rem;
-  max-width: 800px;
-  margin: 0 auto;
-  opacity: 0.9;
-}
-
-/* Section Titles */
-.investigation-guide h2,
-.analysis-section h2,
-.disclaimer-section h2 {
-  font-size: 2.2rem;
-  font-weight: 700;
-  color: #112d4e;
-  text-align: center;
-  margin-bottom: 2.5rem;
-}
-
-/* Accordion Styling */
-.accordion-container {
-  max-width: 900px;
-  margin: 0 auto;
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-}
-
-.accordion-item {
-  border-bottom: 1px solid #dbe2ef;
-}
-
-.accordion-item:last-child {
-  border-bottom: none;
-}
-
-.accordion-header {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  padding: 1.5rem 2rem;
-  background-color: #ffffff;
-  border: none;
-  text-align: left;
-  cursor: pointer;
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: #112d4e;
-  transition: background-color 0.3s ease;
-}
-
-.accordion-header:hover {
-  background-color: #f0f4f8;
-}
-
-.accordion-icon {
-  font-size: 1.8rem;
-  margin-right: 1rem;
-  color: #3f72af;
-}
-
-.accordion-title {
-  flex-grow: 1;
-}
-
-.accordion-arrow {
-  font-size: 1.2rem;
-  transition: transform 0.3s ease;
-}
-
-.accordion-arrow.open {
-  transform: rotate(180deg);
-}
-
-.accordion-content {
-  padding: 1.5rem 2rem;
-  background-color: #dbe2ef;
-  text-align: left;
-  font-size: 1rem;
-  line-height: 1.6;
-  color: #112d4e;
-}
-
-.accordion-content p {
-  margin-bottom: 1rem;
-}
-
-.accordion-content p:last-child {
-  margin-bottom: 0;
-}
-
-.accordion-content strong {
-  color: #112d4e;
-}
-
-/* Analysis Section */
-.analysis-section {
-  max-width: 900px;
-  margin: 4rem auto;
+.suspect-guess-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
   padding: 2rem;
-  background-color: #ffffff;
-  border-radius: 15px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.analysis-section p {
-  text-align: center;
-  margin-bottom: 1.5rem;
-  font-size: 1.1rem;
-  color: #333;
+.suspect-guess-form {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.analysis-input-group {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+.suspect-guess-form h2 {
   margin-bottom: 1.5rem;
 }
 
-.analysis-input-group textarea {
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.form-group textarea,
+.form-group input[type="file"] {
   width: 100%;
-  padding: 1rem;
+  padding: 0.5rem;
   border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 1rem;
-  resize: vertical;
-  min-height: 100px;
+  border-radius: 4px;
 }
 
-.analysis-input-group button {
+.form-actions {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  padding: 0.8rem 1.5rem;
-  background-color: #3f72af;
-  color: #ffffff;
-  border: none;
-  border-radius: 8px;
-  font-size: 1.1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+  gap: 1rem;
 }
 
-.analysis-input-group button:hover {
-  background-color: #112d4e;
+.clear-btn {
+  background-color: #f44336;
 }
 
-.analysis-result {
-  background-color: #e0f7fa;
-  color: #00796b;
-  padding: 1rem;
-  border-radius: 8px;
-  font-weight: 500;
-  text-align: center;
-}
-
-/* Disclaimer Section */
-.disclaimer-section {
-  max-width: 900px;
-  margin: 4rem auto;
+.suspect-guess-result {
+  background: white;
   padding: 2rem;
-  background-color: #fff3e0;
-  border-left: 5px solid #ff9800;
   border-radius: 8px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.disclaimer-section h2 {
-  color: #ff9800;
-  margin-bottom: 1rem;
-}
-
-.disclaimer-section p {
-  font-size: 1rem;
-  line-height: 1.6;
-  color: #555;
-  text-align: left;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .suspect-hero {
-    padding: 3rem 1rem;
-  }
-
-  .suspect-hero h1 {
-    font-size: 2rem;
-  }
-
-  .suspect-hero p {
-    font-size: 1rem;
-  }
-
-  .investigation-guide h2,
-  .analysis-section h2,
-  .disclaimer-section h2 {
-    font-size: 1.8rem;
-  }
-
-  .accordion-header {
-    padding: 1rem 1.5rem;
-    font-size: 1rem;
-  }
-
-  .accordion-icon {
-    font-size: 1.5rem;
-  }
-
-  .accordion-content {
-    padding: 1rem 1.5rem;
-    font-size: 0.9rem;
-  }
-
-  .analysis-section,
-  .disclaimer-section {
-    padding: 1.5rem;
-  }
-
-  .analysis-input-group button {
-    font-size: 1rem;
-  }
+.suspect-guess-result h3 {
+  margin-top: 0;
 }

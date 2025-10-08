@@ -17,7 +17,6 @@ import AboutUs from './pages/AboutUs';
 import ScrollToTop from './components/ScrollToTop'; 
 import CrimePredictor from './pages/CrimePredictor';
 import CrimeDetail from './pages/CrimeDetail';
-import Login from './pages/Login';
 import ChatbotPopup from './components/ChatbotPopup';
 import CyberAwareness from './pages/CyberAwareness';
 import SuspectGuess from './pages/SuspectGuess';
@@ -27,56 +26,41 @@ import ForgotPassword from './pages/ForgotPassword';
 import Quiz from './pages/Quiz';
 import AIAssistant from './pages/AIAssistant';
 
+
 {/*import EmergencyHelp from './pages/EmergencyHelp';*/}
 
 
 
-// ✅ Protected Route Component
-const ProtectedRoute = ({ children }) => {
-  const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
-  return isLoggedIn ? children : <Navigate to="/login" replace />;
-};
-
 const App = () => {
   const location = useLocation();
   const hideNavbarPaths = ['/reportform'];
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const role = localStorage.getItem('role'); // 'admin' or 'user'
 
   useEffect(() => {
     AOS.init({ duration: 1000, once: false, mirror: true });
-    setIsLoggedIn(localStorage.getItem('isLoggedIn') === 'true');
   }, [location]);
 
   const isAuthPage = location.pathname === '/login' || location.pathname === '/signup';
 
   return (
     <>
-      {/* Scroll to top on route change */}
       <ScrollToTop />
 
       {/* Conditional Navbars */}
       {!isAuthPage && (role === 'admin' ? <AdminNavbar /> : <UserNavbar />)}
 
       <Routes>
-        {/* Public Login Route */}
-        <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
 
         <Route
           path="/quiz"
-          element={
-            <ProtectedRoute>
-              <Quiz />
-            </ProtectedRoute>
-          }
+          element={<Quiz />}
         />
 
-        {/* Root path redirects based on login status */}
         <Route
           path="/"
-          element={<Navigate to={isLoggedIn ? "/home" : "/login"} replace />}
+          element={<Home />}
         />
 
         <Route 
@@ -92,41 +76,24 @@ const App = () => {
         {/*<Route path="/emergency-help" element={<EmergencyHelp />} />*/}
 
 
-        {/* Protected Routes */}
         <Route
           path="/home"
-          element={
-            <ProtectedRoute>
-              <Home />
-            </ProtectedRoute>
-          }
+          element={<Home />}
         />
 
         <Route
           path="/get-guidance"
-          element={
-            <ProtectedRoute>
-              <GetGuidance />
-            </ProtectedRoute>
-          }
+          element={<GetGuidance />}
         />
 
         <Route
           path="/awareness" 
-          element={
-           <ProtectedRoute>
-             <CyberAwareness />
-           </ProtectedRoute>  
-          } 
+          element={<CyberAwareness />}
           />  
 
         <Route
           path="/suspect-guess" 
-          element={
-           <ProtectedRoute>
-             <SuspectGuess />
-           </ProtectedRoute>  
-          } 
+          element={<SuspectGuess />}
           />  
 
         <Route path="/why-us" element={<WhyUs />} />
@@ -135,38 +102,22 @@ const App = () => {
 
         <Route
           path="/report"
-          element={
-            <ProtectedRoute>
-              <ReportForm />
-            </ProtectedRoute>
-          }
+          element={<ReportForm />}
         />
 
         <Route
           path="/chatbot"
-          element={
-            <ProtectedRoute>
-              <AIAssistant />
-            </ProtectedRoute>
-          }
+          element={<AIAssistant />}
         />
 
         <Route
           path="/admin/dashboard"
-          element={
-            <ProtectedRoute>
-              <AdminDashboard />
-            </ProtectedRoute>
-          }
+          element={<AdminDashboard />}
         />
 
         <Route
           path="/user/dashboard"
-          element={
-            <ProtectedRoute>
-              <UserDashboard />
-            </ProtectedRoute>
-          }
+          element={<UserDashboard />}
         />
       </Routes>
 
