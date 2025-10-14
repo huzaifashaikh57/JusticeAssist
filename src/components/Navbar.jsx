@@ -50,6 +50,8 @@ const UserNavbar = () => {
           </div>
         </div>
 
+        <Link to="/user-dashboard" onClick={closeMenu}>Dashboard</Link>
+
         <Link to="/why-us" onClick={closeMenu}>Why Us</Link>
         <Link to="/about-us" onClick={closeMenu}>About Us</Link>
         <Link to="/contact" onClick={closeMenu}>Contact</Link>

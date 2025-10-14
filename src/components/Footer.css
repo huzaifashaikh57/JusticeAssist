@@ -53,16 +53,7 @@
     margin-top: 0.5rem;
     line-height: 1.5;
   }
-
-  body, #root, .App {
-    height: 100%;
-    margin: 0;
-  }
-
-  .suspect-container {
-    flex: 1; /* makes this container grow and push footer down */
-    padding: 20px;
-  }
+  
   
   .social-icons {
     display: flex;

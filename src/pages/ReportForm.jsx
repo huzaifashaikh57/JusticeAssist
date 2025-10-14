@@ -126,11 +126,43 @@ const ReportForm = () => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // You can integrate backend here
-    alert("Form Submitted!");
-    setIsSubmitted(true); // <-- Show Download button after submit
+    for (const key in formData) {
+      if (formData[key] === '' || formData[key] === null) {
+        if(key !== 'delay') {
+        alert(`Please fill out the ${key} field.`);
+        return;
+        }
+      }
+    }
+
+    const data = new FormData();
+    for (const key in formData) {
+      data.append(key, formData[key]);
+    }
+
+    const token = localStorage.getItem('token');
+
+    try {
+      const response = await fetch('http://localhost:5000/report/submit-report', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+        },
+        body: data,
+      });
+
+      if (response.ok) {
+        alert('Form Submitted!');
+        setIsSubmitted(true); // <-- Show Download button after submit
+      } else {
+        alert('Form submission failed.');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      alert('An error occurred while submitting the form.');
+    }
   };
 
   const handleGeneratePDF = () => {
@@ -222,34 +254,34 @@ const ReportForm = () => {
         <div className="form-row">
           <label>Name</label>
           <div className="form-split">
-            <input type="text" name="firstName" placeholder="First Name" value={formData.firstName} onChange={handleChange} />
-            <input type="text" name="lastName" placeholder="Last Name" value={formData.lastName} onChange={handleChange} />
+            <input type="text" name="firstName" placeholder="First Name" value={formData.firstName} onChange={handleChange} required />
+            <input type="text" name="lastName" placeholder="Last Name" value={formData.lastName} onChange={handleChange} required />
           </div>
         </div>
 
         <div className="form-row">
           <label>Address</label>
-          <input type="text" name="address" placeholder="Your residential address" value={formData.address} onChange={handleChange} />
+          <input type="text" name="address" placeholder="Your residential address" value={formData.address} onChange={handleChange} required />
         </div>
 
 
         <div className="form-row">
           <label>Email</label>
-          <input type="email" name="email" placeholder="Email Address" value={formData.email} onChange={handleChange} />
+          <input type="email" name="email" placeholder="Email Address" value={formData.email} onChange={handleChange} required />
         </div>
 
         <div className="form-row">
           <label>Phone</label>
           <div className="form-split">
-          <input type="text"  name="phoneCode" placeholder="+91" className="short-input" value={formData.phoneCode} onChange={handleChange}/>
-          <input type="text"  name="phone" placeholder="Enter your mobile number" value={formData.phone} onChange={handleChange}/>
+          <input type="text"  name="phoneCode" placeholder="+91" className="short-input" value={formData.phoneCode} onChange={handleChange} required />
+          <input type="text"  name="phone" placeholder="Enter your mobile number" value={formData.phone} onChange={handleChange} required />
         </div>
 
         </div>
 
         <div className="form-row">
           <label>State</label>
-          <select name="state" value={formData.state} onChange={handleChange}>
+          <select name="state" value={formData.state} onChange={handleChange} required>
             <option value="">Select State</option>
             {states.map((s) => (
               <option key={s} value={s}>{s}</option>
@@ -260,7 +292,7 @@ const ReportForm = () => {
         <div className="form-row">
         <label htmlFor="city">City</label>
         <div className="floating-input">
-        <select id="city" name="city" value={formData.city} onChange={handleChange}>
+        <select id="city" name="city" value={formData.city} onChange={handleChange} required>
             <option value="">-- Select City --</option>
             {(cities[formData.state] || []).map((city, index) => (
               <option key={index} value={city}>{city}</option>
@@ -271,7 +303,7 @@ const ReportForm = () => {
 
         <div className="form-row">
           <label>Complaint Category</label>
-          <select name="category" value={formData.category} onChange={handleChange}>
+          <select name="category" value={formData.category} onChange={handleChange} required>
             <option value="">Select Category</option>
             {Object.keys(categoryOptions).map((cat) => (
               <option key={cat} value={cat}>{cat}</option>
@@ -282,7 +314,7 @@ const ReportForm = () => {
         {formData.category && (
           <div className="form-row">
             <label>Sub-Category</label>
-            <select name="subCategory" value={formData.subCategory} onChange={handleChange}>
+            <select name="subCategory" value={formData.subCategory} onChange={handleChange} required>
               <option value="">Select Sub-Category</option>
               {categoryOptions[formData.category].map((sub) => (
                 <option key={sub} value={sub}>{sub}</option>
@@ -293,7 +325,7 @@ const ReportForm = () => {
 
         <div className="form-row">
           <label>Incident Date and Time</label>
-          <input type="datetime-local" name="incidentDateTime" value={formData.incidentDateTime} onChange={handleChange} />
+          <input type="datetime-local" name="incidentDateTime" value={formData.incidentDateTime} onChange={handleChange} required />
         </div>
 
         <div className="form-row">
@@ -314,12 +346,12 @@ const ReportForm = () => {
 
         <div className="form-row">
           <label>Platform (e.g. Instagram, UPI app, Email, etc.)</label>
-          <input type="text" name="platform" placeholder="Platform where incident occurred" value={formData.platform} onChange={handleChange} />
+          <input type="text" name="platform" placeholder="Platform where incident occurred" value={formData.platform} onChange={handleChange} required />
         </div>
 
         <div className="form-row">
           <label>Description</label>
-          <textarea name="description" rows="4" placeholder="Describe the incident in detail" value={formData.description} onChange={handleChange} />
+          <textarea name="description" rows="4" placeholder="Describe the incident in detail" value={formData.description} onChange={handleChange} required />
         </div>
 
         <div className="form-row">
@@ -328,7 +360,7 @@ const ReportForm = () => {
             type="file" 
             accept="image/*" 
             onChange={handleImageChange} 
-          />
+           required />
         </div>
 
 

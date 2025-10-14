@@ -27,7 +27,7 @@ const ChatbotPopup = () => {
         { query: userMessage },
         {
           headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`, // 👈 JWT stored after login
+            // No Authorization header; endpoint is public now
           },
         }
       );

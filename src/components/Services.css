@@ -1,0 +1,67 @@
+/* src/components/Services.css */
+.services-container {
+  padding: 60px 20px;
+  background-color: #f4f7fc;
+}
+
+.services-container h2 {
+  text-align: center;
+  font-size: 2.8rem;
+  margin-bottom: 50px;
+  color: #1a253c;
+  font-weight: 700;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 35px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.service-card {
+  background: #ffffff;
+  border-radius: 15px;
+  text-decoration: none;
+  color: #333;
+  padding: 35px;
+  border-bottom: 4px solid transparent; /* Default border */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  text-align: center;
+}
+
+.service-card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+}
+
+.card-icon {
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 25px auto;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+.card-icon i {
+  font-size: 2.5rem;
+  color: #fff;
+}
+
+.service-card h3 {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #1a253c;
+}
+
+.service-card p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #667288;
+}

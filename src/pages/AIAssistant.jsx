@@ -6,14 +6,30 @@ const AIAssistant = () => {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
 
-  const handleSend = () => {
-    if (input.trim()) {
-      setMessages([...messages, { text: input, sender: 'user' }]);
-      setInput('');
-      // Simulate AI response
-      setTimeout(() => {
-        setMessages(prevMessages => [...prevMessages, { text: 'This is a simulated response from the AI Assistant.', sender: 'ai' }]);
-      }, 1000);
+  const handleSend = async () => {
+    if (!input.trim()) return;
+
+    const userText = input;
+    setMessages([...messages, { text: userText, sender: 'user' }]);
+    setInput('');
+
+    try {
+      const res = await fetch('http://127.0.0.1:5000/ai/get-guidance', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ query: userText }),
+      });
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        throw new Error(err.error || `Request failed with ${res.status}`);
+      }
+      const data = await res.json();
+      setMessages(prev => [...prev, { text: data.guidance || 'No response from AI.', sender: 'ai' }]);
+    } catch (e) {
+      console.error(e);
+      setMessages(prev => [...prev, { text: '⚠️ Authentication error or server issue.', sender: 'ai' }]);
     }
   };
 

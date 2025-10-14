@@ -1,22 +1,13 @@
-// src/components/UserNavbar.jsx
 import React, { useState, useEffect, useRef } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link as RouterLink, useLocation, useNavigate } from 'react-router-dom';
 import './UserNavbar.css';
 
 const UserNavbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [magicLineStyle, setMagicLineStyle] = useState({});
   const location = useLocation();
   const dropdownRef = useRef();
   const navigate = useNavigate();
-
-  const homeRef = useRef();
-  const servicesRef = useRef();
-  const whyUsRef = useRef();
-  const aboutUsRef = useRef();
-  const contactRef = useRef();
-  const linksRef = useRef();
 
   // ✅ all service routes
   const servicePaths = [
@@ -42,29 +33,6 @@ const UserNavbar = () => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  useEffect(() => {
-    let activeRef;
-  
-    if (location.pathname === '/') activeRef = homeRef;
-    else if (servicePaths.includes(location.pathname)) activeRef = servicesRef;
-    else if (location.pathname === '/why-us') activeRef = whyUsRef;
-    else if (location.pathname === '/about-us') activeRef = aboutUsRef;
-    else if (location.pathname === '/contact') activeRef = contactRef;
-  
-    if (activeRef && activeRef.current && linksRef.current) {
-      const activeRect = activeRef.current.getBoundingClientRect();
-      const parentRect = linksRef.current.getBoundingClientRect();
-  
-      setMagicLineStyle({
-        left: activeRect.left - parentRect.left,
-        width: activeRect.width,
-      });
-    } else {
-      setMagicLineStyle({ left: 0, width: 0 });
-    }
-  }, [location.pathname]);
-  
-
   const handleLogout = () => {
     localStorage.removeItem('isLoggedIn');
     localStorage.removeItem('token');
@@ -84,52 +52,56 @@ const UserNavbar = () => {
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
+  const handleClick = (e, targetId) => {
+    e.preventDefault();
+    const targetElement = document.getElementById(targetId);
+    if (targetElement) {
+      window.scrollTo({
+        top: targetElement.offsetTop,
+        behavior: 'smooth',
+      });
+    }
+  };
+
+  const isHomePage = location.pathname === '/' || location.pathname === '/home';
+
   return (
     <nav className="navbar">
       <div className="navbar-left">
-        <Link to="/" className="navbar-logo" onClick={() => setIsOpen(false)}>
+        <RouterLink to="/" className="navbar-logo" onClick={() => setIsOpen(false)}>
           Justice<span>Assist</span>
-        </Link>
+        </RouterLink>
       </div>
 
       <div className={`navbar-center ${isOpen ? 'open' : ''}`}>
-        <div className="navbar-links" ref={linksRef}>
-          <Link ref={homeRef} to="/" className={getLinkClass('/')}>
+        <div className="navbar-links">
+          <a href="#home" onClick={(e) => handleClick(e, 'home')} className="nav-link">
             Home
-          </Link>
+          </a>
 
-          <div className={`dropdown ${dropdownOpen ? 'open' : ''}`} ref={dropdownRef}>
-            <span
-              ref={servicesRef}
-              className={getLinkClass('services')}
-              role="button"
-              tabIndex={0}
-              onClick={() => setDropdownOpen(prev => !prev)}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter' || e.key === ' ') setDropdownOpen(prev => !prev);
-              }}
-            >
-              Services ▾
-            </span>
-            <div className="dropdown-content">
-              <Link to="/get-guidance">Get Guidance</Link>
-              <Link to="/report">PDF Generator</Link>
-              <Link to="/chatbot">AI Assistant</Link>
-              <Link to="/awareness">Cyber Awareness</Link>
-              <Link to="/suspect-guess">Suspect Guess</Link>
-            </div>
-          </div>
+          {isHomePage ? (
+            <a href="#services" onClick={(e) => handleClick(e, 'services')} className="nav-link">
+              Services
+            </a>
+          ) : (
+            <RouterLink to="/#services" className="nav-link">
+              Services
+            </RouterLink>
+          )}
 
-          <Link ref={whyUsRef} to="/why-us" className={getLinkClass('/why-us')}>
+          <RouterLink to="/user-dashboard" className={getLinkClass('/user-dashboard')}>
+            Dashboard
+          </RouterLink>
+
+          <RouterLink to="/#why-us" className="nav-link">
             Why Us
-          </Link>
-          <Link ref={aboutUsRef} to="/about-us" className={getLinkClass('/about-us')}>
+          </RouterLink>
+          <RouterLink to="/#about-us" className="nav-link">
             About Us
-          </Link>
-          <Link ref={contactRef} to="/contact" className={getLinkClass('/contact')}>
+          </RouterLink>
+          <RouterLink to="/#contact-us" className="nav-link">
             Contact
-          </Link>
-          <div className="magic-line" style={magicLineStyle}></div>
+          </RouterLink>
         </div>
       </div>
 

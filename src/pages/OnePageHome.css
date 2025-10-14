@@ -1,0 +1,11 @@
+.one-page-home-container {
+  height: auto !important; /* Ensure main container height is not fixed */
+  overflow: visible !important; /* Ensure main container content is not hidden */
+}
+
+.one-page-home-container .element:not(#home) {
+  padding-top: 6rem !important; /* Apply padding-top to all sections except #home */
+  padding-bottom: 4rem; /* Maintain original bottom padding */
+  height: auto !important; /* Force height to be auto */
+  overflow: visible !important; /* Ensure content is not hidden */
+}

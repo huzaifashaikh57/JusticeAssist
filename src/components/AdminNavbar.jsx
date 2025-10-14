@@ -27,9 +27,9 @@ const AdminNavbar = () => {
 
       <div className={`navbar-links ${isOpen ? 'open' : ''}`}>
         <Link to="/admin/dashboard">Dashboard</Link>
-        <Link to="/admin/complaints">Complaints</Link>
-        <Link to="/admin/users">Users</Link>
-        <Link to="/admin/settings">Settings</Link>
+        <Link to="/#why-us">Why Us</Link>
+        <Link to="/#about-us">About Us</Link>
+        <Link to="/#contact-us">Contact</Link>
         <button onClick={handleLogout} className="logout-button">Logout</button>
       </div>
 
