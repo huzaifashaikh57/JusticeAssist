@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import './Auth.css';
+import './Login.css';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -9,6 +9,7 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log('Submitting to: http://localhost:5000/auth/login');
 
     try {
       const response = await fetch('http://localhost:5000/auth/login', {
@@ -35,32 +36,46 @@ const Login = () => {
   };
 
   return (
-    <div className="auth-container">
-      <form className="auth-form" onSubmit={handleSubmit}>
-        <h2>Login</h2>
-        <div className="form-group">
-          <label>Email</label>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
+    <div className="login-page-wrapper">
+      <div className="login-container">
+        <div className="login-left">
+          <div className="login-left-overlay"></div>
+          <div className="login-left-content">
+            <h2>Welcome Back!</h2>
+            <p>Log in to access your account and continue your journey with JusticeAssist.</p>
+          </div>
         </div>
-        <div className="form-group">
-          <label>Password</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
+        <div className="login-right">
+          <form className="login-form" action="http://localhost:5000/auth/login" method="POST" onSubmit={handleSubmit}>
+            <h2>Login</h2>
+            <div className="input-group">
+              <input
+                type="email"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </div>
+            <div className="input-group">
+              <input
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+            </div>
+            <div className="form-options">
+              <Link to="/forgot-password">Forgot Password?</Link>
+            </div>
+            <button type="submit" className="login-btn">Login</button>
+            <p className="signup-link">
+              Don't have an account? <Link to="/register">Sign up</Link>
+            </p>
+          </form>
         </div>
-        <button type="submit">Login</button>
-        <p>
-          Don't have an account? <Link to="/register">Register</Link>
-        </p>
-      </form>
+      </div>
     </div>
   );
 };

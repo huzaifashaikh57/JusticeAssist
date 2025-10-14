@@ -9,7 +9,7 @@
 
 .hero {
   text-align: center;
-  padding: 4rem 2rem;
+  padding: 8rem 2rem; /* Increased padding-top to 8rem */
   background: linear-gradient(-45deg, #3F72AF, #112D4E, #3F72AF, #112D4E);
   background-size: 400% 400%;
   color: #F9F7F7;
